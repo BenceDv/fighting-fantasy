@@ -1,0 +1,74 @@
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dark Mode Toggle</title>
+  <style>
+    body {
+      background-color: #111;
+      color: #fff;
+      transition: background-color 0.3s ease;
+    }
+    
+    .container {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 2rem;
+    }
+    
+    .toggle-btn {
+      position: fixed;
+      top: 1rem;
+      left: 1rem;
+      background-color: #fff;
+      color: #111;
+      padding: 0.5rem;
+      border-radius: 50%;
+      cursor: pointer;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <h1>Welcome to My Website</h1>
+    <p>This is a sample website with a dark mode and light mode toggle button.</p>
+    <p>Feel free to explore and enjoy the content!</p>
+  </div>
+
+  <div class="toggle-btn" id="toggleBtn">🌙</div>
+
+  <script>
+    const toggleBtn = document.getElementById('toggleBtn');
+    const body = document.body;
+
+    // Check if user has a preferred color scheme
+    const prefersDarkMode = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+
+    // Set initial mode based on user preference
+    if (prefersDarkMode) {
+      enableDarkMode();
+    } else {
+      enableLightMode();
+    }
+
+    // Toggle between dark mode and light mode
+    toggleBtn.addEventListener('click', function () {
+      if (body.classList.contains('dark-mode')) {
+        enableLightMode();
+      } else {
+        enableDarkMode();
+      }
+    });
+
+    function enableDarkMode() {
+      body.classList.add('dark-mode');
+      toggleBtn.textContent = '☀️';
+    }
+
+    function enableLightMode() {
+      body.classList.remove('dark-mode');
+      toggleBtn.textContent = '🌙';
+    }
+  </script>
+</body>
+
+</html>
