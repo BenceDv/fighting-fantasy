@@ -1,4 +1,8 @@
+<!DOCTYPE html>
+<html lang="en">
+
 <head>
+  <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Dark Mode Toggle</title>
   <style>
@@ -6,6 +10,11 @@
       background-color: #111;
       color: #fff;
       transition: background-color 0.3s ease;
+    }
+    
+    body.light-mode {
+      background-color: #f5f5f5;
+      color: #111;
     }
     
     .container {
@@ -52,23 +61,22 @@
 
     // Toggle between dark mode and light mode
     toggleBtn.addEventListener('click', function () {
-      if (body.classList.contains('dark-mode')) {
-        enableLightMode();
-      } else {
+      if (body.classList.contains('light-mode')) {
         enableDarkMode();
+      } else {
+        enableLightMode();
       }
     });
 
     function enableDarkMode() {
-      body.classList.add('dark-mode');
-      toggleBtn.textContent = '☀️';
+      body.classList.remove('light-mode');
+      toggleBtn.textContent = '🌙';
     }
 
     function enableLightMode() {
-      body.classList.remove('dark-mode');
-      toggleBtn.textContent = '🌙';
+      body.classList.add('light-mode');
+      toggleBtn.textContent = '☀️';
     }
   </script>
 </body>
-
 </html>
